@@ -1,3 +1,7 @@
 src/GradeBook/bin
 
 src/GradeBook/obj
+
+test/GradeBook.tests/obj
+
+test/GradeBook.tests/bin
