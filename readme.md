@@ -2,7 +2,9 @@
 
 ## How to run?
 ```
- dotnet run
+dotnet restore
+dotnet build
+dotnet run --project src/GradeBook
 
 ```
 
@@ -18,3 +20,10 @@
 # Basic C#
 Files:
 GradeBook.scproj - a c# project. can contain information about my command
+
+# NuGet
+package feed provided by microsoft and developers. Equals npm in nodejs.
+
+
+# Debugging
+Inside .vscode there is a file called launch.json, as part of the configurations there is an array called "args" it will mimic the cmd arguments for debugging purposes.
