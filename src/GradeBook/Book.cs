@@ -9,12 +9,12 @@ namespace GradeBook
         public Book(string name)
         {
             grades = new List<double>();
-            this.name = name;
+            Name = name;
         }
         public void AddGrade(double grade)
         {
             grades.Add(grade);
-            Console.WriteLine($"{name}'s new added grades is: {grade:N2}");
+            Console.WriteLine($"A new added grade: {grade:N2}");
         }
 
         public Stats GetStats()
@@ -40,6 +40,6 @@ namespace GradeBook
 
         // its no longer a variable it is now called field in c#
         private List<double> grades;
-        private string name;
+        public string Name;
     }
 }
