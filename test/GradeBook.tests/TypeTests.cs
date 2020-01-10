@@ -3,6 +3,7 @@ using Xunit;
 
 namespace GradeBook.tests
 {
+    public delegate string WriteLogDelegate(string logMessage);
     /*
     // Guideline to writing good unit tests:
     // arrange the test
@@ -11,6 +12,29 @@ namespace GradeBook.tests
    */
     public class TypeTests
     {
+        int count = 0;
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            WriteLogDelegate log = ReturnMessage;
+            log += ReturnMessage;
+            log += IncrementCount ;
+
+            var result = log("Hi, I am a log message!");
+
+            Assert.Equal(3, count);
+        }
+
+        private string IncrementCount(string message)
+        {
+            count++;
+            return message.ToLower();
+        }
+        private string ReturnMessage(string message)
+        {
+            count++;
+            return message;
+        }
 
         [Fact]
         public void StringBehaveLikeValueTypes()

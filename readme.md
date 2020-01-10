@@ -50,3 +50,51 @@ An SLN file is a structure file used for organizing projects in Microsoft Visual
 # Testing
 [Fact] = Declares that a method is a unit test.
 
+# C# Method overloading
+Method Overloading is the common way of implementing polymorphism. It is the ability to redefine a function in more than one form. A user can implement function overloading by defining two or more functions in a class sharing the same name. C# can distinguish the methods with different method signatures.
+
+```
+public string AddGrade(char letter, int x) {
+    return " ";
+}
+
+public void AddGrade(char letter) {
+   console.WriteLine($"The grade's letter is: {letter}");;
+}
+```
+
+## events
+* delegate give us the ability to point to or invoke different method. it is a method in a specific shape.
+```
+    // define the delegate field
+    public delegate string WriteLogDelegate(string logMessage;
+
+    // implementation and usage example:
+    Note that is OK that the name is not the same. What's important is the return value and the function signature
+     
+            int count = 0;
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            WriteLogDelegate log = ReturnMessage;
+            log += ReturnMessage;
+            log += IncrementCount ;
+
+            var result = log("Hi, I am a log message!");
+
+            Assert.Equal(3, count);
+        }
+
+        private string IncrementCount(string message)
+        {
+            count++;
+            return message.ToLower();
+        }
+        private string ReturnMessage(string message)
+        {
+            count++;
+            return message;
+        }
+```
+
+

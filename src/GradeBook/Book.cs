@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace GradeBook
 {
+
     public class Book
     {
         // this is how we generate a constructor in c#
@@ -17,6 +18,10 @@ namespace GradeBook
             if (grade <= 100 && grade >= 0)
             {
                 grades.Add(grade);
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -93,6 +98,13 @@ namespace GradeBook
 
         // its no longer a variable it is now called field in c#
         private List<double> grades;
-        public string Name;
+
+        public event GradeAddedDelegate GradeAdded;
+        public string Name
+        {
+            get;
+            // preventing ability to write Name param
+            set;
+        }
     }
 }

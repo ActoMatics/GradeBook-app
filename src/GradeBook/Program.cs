@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace GradeBook
 {
@@ -8,6 +7,8 @@ namespace GradeBook
         static void Main(string[] args)
         {
             var book = new Book("Dan's Grade Book");
+            // handling the event
+            book.GradeAdded += OnGradeAdded;
 
             while (true)
             {
@@ -36,10 +37,16 @@ namespace GradeBook
 
             var stats = book.GetStats();
 
+            Console.WriteLine($"For the book names: {book.Name}");
             Console.WriteLine($"The highest grade is: {stats.High}");
             Console.WriteLine($"The lowest grade is: {stats.Low}");
             Console.WriteLine($"The average grade is: {stats.Average:N2}");
             Console.WriteLine($"The grade is: {stats.Letter}");
+
+            static void OnGradeAdded(object sender, EventArgs e)
+            {
+                Console.WriteLine($"A new grade was added");
+            }
         }
     }
 }
