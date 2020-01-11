@@ -1,10 +1,60 @@
-namespace GradeBook {
+using System;
 
-    public class Stats {
-        public double Average;
+namespace GradeBook
+{
+
+    public class Stats
+    {
+        public double Average
+        {
+            get
+            {
+                return Sum / Count;
+            }
+        }
         public double High;
         public double Low;
+        public char Letter
+        {
+            get
+            {
+                switch (Average)
+                {
+                    case var d when d >= 90.0:
+                        return 'A';
 
-        public char Letter;
+                    case var d when d >= 80.0:
+                        return 'B';
+
+                    case var d when d >= 70.0:
+                        return 'C';
+
+                    case var d when d >= 60.0:
+                        return 'D';
+
+                    default:
+                        return 'F';
+                }
+            }
+        }
+        public double Sum;
+        public int Count;
+
+        public void Add(double number)
+        {
+            Sum += number;
+            Count += 1;
+            // calc hightest grades
+            High = Math.Max(number, High);
+            // calc lowest grades
+            Low = Math.Min(number, Low);
+        }
+        public Stats()
+        {
+            Count = 0;
+            Sum = 0;
+            High = double.MinValue;
+            Low = double.MaxValue;
+        }
     }
 }

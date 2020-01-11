@@ -6,13 +6,26 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            var book = new Book("Dan's Grade Book");
-            // handling the event
+            IBook book = new DiskBook("Dan's Grade DiskBook");
+            // Subscribe to an event
             book.GradeAdded += OnGradeAdded;
 
+            EnterGrades(book);
+
+            var stats = book.GetStats();
+
+            Console.WriteLine($"For the book named {book.Name}");
+            Console.WriteLine($"The lowest grade is {stats.Low}");
+            Console.WriteLine($"The highest grade is {stats.High}");
+            Console.WriteLine($"The average grade is {stats.Average:N2}");
+            Console.WriteLine($"The letter grade is {stats.Letter}");
+        }
+
+        private static void EnterGrades(IBook book)
+        {
             while (true)
             {
-                Console.WriteLine("Please add a grade, or 'q' to quit");
+                Console.WriteLine("Enter a grade or 'q' to quit");
                 var input = Console.ReadLine();
 
                 if (input == "q")
@@ -33,20 +46,15 @@ namespace GradeBook
                 {
                     Console.WriteLine(ex.Message);
                 }
+                finally
+                {
+                    Console.WriteLine("**");
+                }
             }
-
-            var stats = book.GetStats();
-
-            Console.WriteLine($"For the book names: {book.Name}");
-            Console.WriteLine($"The highest grade is: {stats.High}");
-            Console.WriteLine($"The lowest grade is: {stats.Low}");
-            Console.WriteLine($"The average grade is: {stats.Average:N2}");
-            Console.WriteLine($"The grade is: {stats.Letter}");
-
-            static void OnGradeAdded(object sender, EventArgs e)
-            {
-                Console.WriteLine($"A new grade was added");
-            }
+        }
+        static void OnGradeAdded(object sender, EventArgs e)
+        {
+            Console.WriteLine($"A new grade was added");
         }
     }
 }

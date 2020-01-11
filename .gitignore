@@ -2,6 +2,9 @@ src/GradeBook/bin
 
 src/GradeBook/obj
 
+src/GradeBook/*.txt
+
+
 test/GradeBook.tests/obj
 
 test/GradeBook.tests/bin

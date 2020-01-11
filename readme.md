@@ -46,6 +46,7 @@ An SLN file is a structure file used for organizing projects in Microsoft Visual
 
 # Code conventions in c#
 * methods/class/filenames/public member == use Upper Case;
+* Interface should start with a capital I -> example "public interface IBook"
 
 # Testing
 [Fact] = Declares that a method is a unit test.
@@ -97,4 +98,9 @@ public void AddGrade(char letter) {
         }
 ```
 
+## The 3 Pillars of OOP
+1. Encapsulation - allow us to hide details about our code and who sees each member of a class. It give us explicate control over our members, functions and fields. Good encapsulation is the key to good software design.
+2. Inheritance - give us the ability to reuse code across similar classes. 
+3. Polymorphism - allow us to have object of the same type to behave differently.
 
+* Using the virtual keyword - its a way in c# to say here is a method that in this class but a derive calls may choose to override the implementation details of the the method. Events and properties can also be virtual.
